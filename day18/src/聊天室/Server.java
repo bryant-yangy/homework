@@ -16,14 +16,11 @@ public class Server {
         System.out.println("服务已启动，等待连接");
         ExecutorService service = new ThreadPoolExecutor(10, 10, 0, TimeUnit.SECONDS,
                 new LinkedBlockingQueue<>());
-        while(true) {
+        while (true) {
             // 2. 调用accept 等待客户端连接
             Socket socket = serverSocket.accept();
             service.submit(new task(socket));
         }
     }
-
-
-
 }
 

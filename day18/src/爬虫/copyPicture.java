@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class copyPicture {
-    public static void main (String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         ExecutorService service = new ThreadPoolExecutor(10, 10, 0, TimeUnit.SECONDS,
                 new LinkedBlockingQueue<>());
         //https://tieba.baidu.com/p/2256306796?red_tag=1781367364
@@ -20,31 +20,29 @@ public class copyPicture {
                 new URL("https://tieba.baidu.com/p/2256306796?red_tag=1781367364").openConnection();
         InputStream in = connection.getInputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-        int i=1;
+        int i = 1;
         String l;
-        StringBuffer s=new StringBuffer("");
-        while((l=reader.readLine())!=null) {
+        StringBuffer s = new StringBuffer("");
+        while ((l = reader.readLine()) != null) {
             s.append(new String(l));
         }
-       // System.out.println(s);
-        File file=new File("图片");
+        // System.out.println(s);
+        File file = new File("图片");
         file.mkdir();
-        int current=0;
-        while((current=s.indexOf("<img class=\"BDE_Image\"",current))!=-1){
+        int current = 0;
+        while ((current = s.indexOf("<img class=\"BDE_Image\"", current)) != -1) {
 
-            int end=s.indexOf(">",current);
+            int end = s.indexOf(">", current);
             current++;
-            String s1=s.substring(current,end);
-            int current1=s1.indexOf("https:");
-            int ends1=-1;
-            String s2="";
-            if(current1!=-1){
-                ends1=s1.indexOf("\"",current1);
-                s2=s1.substring(current1,ends1);
+            String s1 = s.substring(current, end);
+            int current1 = s1.indexOf("https:");
+            int ends1 = -1;
+            String s2 = "";
+            if (current1 != -1) {
+                ends1 = s1.indexOf("\"", current1);
+                s2 = s1.substring(current1, ends1);
                 service.submit(new task(s2, String.valueOf(i++)));
             }
-
-
         }
         service.shutdown();
 
