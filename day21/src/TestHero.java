@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 // 8. 按出生地分组后，统计各组人数
 public class TestHero {
     public static void main(String[] args) throws IOException {
-        Stream<String> lines = Files.lines(Paths.get("heroes.txt"), Charset.forName("utf-8"));
+        Stream<String> lines = Files.lines(Paths.get("D:\\JAVA\\homework\\day21\\heroes.txt"), Charset.forName("utf-8"));
         List<Hero> list = new ArrayList<>();
         lines.forEach(str->{
             String[] split = str.split("\t");
