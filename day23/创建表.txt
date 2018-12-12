@@ -1,0 +1,98 @@
+1.
+创建一张学生（Student）表，属性如下
+create table Student(
+SID int primary key   auto_increment,
+SNAME varchar(20) not null,
+BIRTHDAY datetime,
+SEX char(1)
+ )auto_increment=1001;
+
+向学生表插入数据
+insert into Student(SNAME,BIRTHDAY,SEX) values
+('张三','1990-10-10','男'),
+('李四','1981-10-10','男'),
+('王五','1981-11-10','女'),
+('赵六','1988-10-10','男'),
+('孙七','1989-01-10','女'),
+('周八','1990-10-10','男'),
+('张三','1990-06-10','女');
+
+创建教师表（Teacher）
+create table Teacher(
+TID int primary key auto_increment,
+TNAME char(20) not null
+);
+
+向教师表插入数据
+insert into Teacher(TNAME) values
+("叶平"),
+("王老师"),
+("张老师"),
+("李老师"),
+("孙老师");
+
+创建一张课程表（Course）
+create table Course(
+    CID int primary key auto_increment,
+    CNAME char(20) not null,
+    TID int
+);
+
+
+插入课程数据
+insert into Course(CNAME,TID) values
+("企业管理",1),
+("马克思",2),
+("UML",3),
+("数据库",4),
+("英语",5),
+("语文",1),
+("数学",2);
+
+创建成绩表（SC）
+create table SC (SID int not null,
+                  CID int not null,
+                  SCORE int not null);
+
+插入成绩数据
+insert into SC(SID,CID,SCORE) values
+(1001,1,50),
+(1002,1,90),
+(1003,1,59),
+(1004,1,80),
+(1005,1,50),
+(1006,1,60),
+(1007,1,100),
+(1001,2,70),
+(1003,2,70),
+(1004,2,70),
+(1005,2,50),
+(1001,3,80),
+(1005,3,100),
+(1001,4,90),
+(1002,4,55),
+(1005,4,30),
+(1007,4,58),
+(1001,5,80),
+(1001,6,80),
+(1002,6,90),
+(1007,6,90),
+(1001,7,100),
+(1002,7,80),
+(1007,7,80);
+创建her表
+create table hero(
+    id int primary key,
+    name varchar(10),
+    loc varchar(10),
+    sex char(1),
+    birth int,
+    death int,
+    power int
+);
+插入数据
+load data infile 'e:\\heroes.txt' into table hero;
+
+导入scott
+source e:/scott.sql;
+

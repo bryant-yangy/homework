@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Collection;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,7 +24,14 @@ public class task implements Runnable {
         try {
             Login(socket);
             handle(socket);
-        } catch (IOException e) {
+        }catch (SocketException e ){
+            String s3 = map.get(socket);
+            map.remove(socket);
+            System.out.println(s3 + "离开了");
+            Thread thread = Thread.currentThread();
+            thread.stop();
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
