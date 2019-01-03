@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function  indexOf(arr, item){
+            for(var i=1;i<arr.length;i++){
+                if (arr[i]==item)
+                    return i;
+            }
+            return -1;
+        }
+        function sum(arr) {
+            var a=0;
+            for(var i=0;i<arr.length;i++){
+                a+=arr[i];
+            }
+            return a;
+        }
+        function remove(arr, item) {
+            var arr1=[];
+            for(var i=0;i<arr.length;i++){
+                if(arr[i]!=item){
+                    arr1.push(arr[i]);
+                }
+            }
+            return arr1;
+        }
+        function  removeWithoutCopy(arr, item) {
+            for(var i=0;i<arr.length;i++){
+                if(arr[i]==item){
+                    arr.splice(i--,1);
+
+                }
+            }
+            return arr;
+        }
+        function append(arr, item) {
+            arr.push(item);
+            return arr;
+        }
+        function truncate(arr) {
+            arr.pop();
+            return arr;
+        }
+        function prepend(arr, item) {
+            arr.unshift(item);
+            return arr;
+        }
+        function curtail(arr) {
+            arr.splice(0,1);
+            return arr;
+        }
+        function concat(arr1, arr2) {
+            for(var i=0;i<arr2.length;i++){
+                arr1.push(arr2[i]);
+            }
+            return arr1;
+        }
+        function insert(arr, item, index) {
+            arr.splice(index,0,item);
+            return arr;
+        }
+        function count(arr, item) {
+            var a=0;
+            for(i=0;i<arr.length;i++){
+                if(arr[i]==item)
+                    a++;
+            }
+            return a;
+        }
+        function duplicates(arr) {
+            var arr1=[];
+            arr.sort();
+            for(i=1;i<arr.length-1;i++){
+                if((arr[i]==arr[i-1])&&arr[i]!=arr[i+1]){
+                    arr1.push(arr[i]);
+                }
+            }
+            if(arr[arr.length-1]==arr[arr.length-2]){
+                arr1.push(arr[arr.length-1]);
+            }
+            return arr1;
+        }
+        function findAllOccurrences(arr, target) {
+            var arr1=[];
+            for(i=1;i<arr.length;i++){
+                if(arr[i]==target){
+                    arr1.push(i);
+                }
+            }
+            return arr1;
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

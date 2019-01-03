@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度一下 你就知道</title>
+    <style type="text/css">
+        div.rightTop{
+            position: absolute;
+            right: 0px;
+            top:0px;
+        }
+        p>a{
+            color: black;
+            margin: 3px;
+        }
+        p>a:hover{
+            color: blue;
+        }
+       div.imgcenter{
+           width: 300px;
+           height: 150px;
+           margin-left: 550px;
+           margin-top: 100px;
+        }
+        div.imgcenter>img {
+            width: 270px;
+        }
+        div.searchandbutton{
+            margin-top: 50px;
+            margin-left: 470px;
+        }
+        .search{
+            height: 35px;
+            width: 350px;
+        }
+        .button{
+            background-color: dodgerblue;
+            color: white;
+            width: 80px;
+            height: 35px;
+        }
+        #morePro{
+            background-color: dodgerblue;
+            color: whitesmoke;
+        }
+        .hidden{
+            display: none;
+            width: 65px;
+            height: 400px;
+            position: absolute;
+            right: 0px;
+            top:35px;
+            background-color:snow;
+
+        }
+    </style>
+    <script>
+        function f1() {
+            document.getElementById("h").style.display="block";
+        }
+        function f2() {
+            document.getElementById("h").style.display="none";
+        }
+
+    </script>
+
+</head>
+<p>
+    <div class="rightTop">
+        <p><a href="">新闻</a><a href="">hao123 </a><a href="">地图</a><a href="">视频</a>
+            <a href="">贴吧</a><a href="">学术 </a><a href="">登录 </a><a href="">设置 </a>
+        <span id="morePro" onmouseover=f1() onmouseout="f2()">更多产品</span>
+        </p>
+    </div>
+    <div class="hidden" id="h" onmouseover="f1()" onmouseout="f2()">
+        <p>糯米</p>
+        <p>音乐</p>
+        <p>图片</p>
+        <p>知道</p>
+        <p>文库</p>
+        <p>风云榜</p>
+    </div>
+    <div class="imgcenter">
+        <img id="img1"   src="..//1.gif">
+    </div>
+    <div class="searchandbutton">
+        <form>
+            <input class="search" type="search">  <input class="button" type="button" value="百度一下"></p>
+        </form>
+    </div>
+</body>
+</html>
+
+
+

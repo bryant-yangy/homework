@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+
+        #inUsername{
+            visibility:hidden;
+        }
+        #send{
+            background-color: wheat ;
+
+        }
+    </style>
+    <script>
+        function checkUsername() {
+            var s=document.getElementById("username").value;
+            if(s.length<=2){
+                document.getElementById("inUsername").style.visibility="inherit";
+                return false;
+            }
+            else {
+                document.getElementById("inUsername").style.visibility="hidden";
+                return true;
+            }
+        }
+        function  checkPassword() {
+            var sPW=document.getElementById("password").value;
+            var dit=0;
+            var letter=0;
+            var other=0;
+            if(sPW.length<6){
+                document.getElementById("inPassword").innerText="密码强度低";
+                return false;
+            }
+            for(var i=0;i<sPW.length;i++){
+                if((sPW[i]>'a'&&sPW[i]<'z')||(sPW[i]>'A'&&sPW[i]<'Z')){
+                    letter=1;
+                }
+                else if(sPW[i]>'0'&&sPW[i]<'9'){
+                    dit=1;
+                }
+                else{
+                    other=1;
+                }
+
+            }
+            var a=dit+letter+other;
+            if(a==3){
+                document.getElementById("inPassword").innerText="密码强度高";
+                return true;
+            }else if(a==2){
+                document.getElementById("inPassword").innerText="密码强度中";
+                return true;
+            }else{
+                document.getElementById("inPassword").innerText="密码强度低";
+                return false;
+            }
+        }
+        function sendIdentifyingCode() {
+
+            document.getElementById("send").style.background="whitesmoke";
+            document.getElementById("send").disabled="true";
+            var j=60;
+            for(var i=60;i>0;i--){
+                setTimeout(function(){
+                    document.getElementById("inSend").innerText="剩余"+j--+"秒";
+                } , 1000*i);
+            }
+            setTimeout(function(){
+                document.getElementById("inSend").innerText="";
+                document.getElementById("send").disabled="false";
+            } , 1000*60);
+        }
+        function Submit() {
+            var r="";
+            if(!checkUsername()){
+               r="用户名不合法";
+            }else if(!checkPassword()){
+                r="密码不合法";
+            }
+            else if(!document.getElementById("radio").checked){
+                r="请同意许可";
+            }
+            else {
+               r="提交成功";
+            }
+            alert(r);
+
+        }
+    </script>
+
+</head>
+<body>
+    <form>
+        <p>用户名<input type="text" id="username" value="" onblur="checkUsername()"><span id="inUsername"> 用户名不合法</span></p>
+        <p>密码<input type="password" id="password" value="" onblur="checkPassword()"><span id="inPassword">  </span></p>
+        <p><input type="button" value="发送验证码" id="send" onclick="sendIdentifyingCode()"><span id="inSend"></span> </p>
+        <p>同意许可<input type="radio" id="radio"> </p>
+        <p><input type="button" value="提交" id="submit" onclick="Submit()"></p>
+    </form>
+</body>
+</html>
