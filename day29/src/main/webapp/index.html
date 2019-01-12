@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function test1() {
+            var s= document.getElementById("us").value;
+            if(/^\w+$/.test(s)){
+                document.getElementById("ustest").innerText="格式正确";
+                return true;
+            }else{
+                document.getElementById("ustest").innerText="验证失败";
+                return false;
+            }
+        }
+        function test2() {
+            var s= document.getElementById("pa").value;
+            if(/^\w+$/.test(s)){
+                document.getElementById("patest").innerText="格式正确";
+                return true;
+            }else{
+                document.getElementById("patest").innerText="验证失败";
+                return false;
+            }
+        }
+        function  test() {
+            if(test1()&&test2()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="/servlet" method = "post" onsubmit=" return test() ">
+        用户名:<input type="text" name="username" id="us" onblur="test1()"> <span id="ustest"></span>
+        <br>
+        密码: <input type="password" name="password" id="pa" onblur="test2()"> <span id="patest"></span>
+        <br>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

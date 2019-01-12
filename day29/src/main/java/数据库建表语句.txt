@@ -1,0 +1,6 @@
+Create database userinformation;
+use userinformation;
+create table user(
+	username char(15) primary key,
+	password char(15)
+);
